@@ -27,7 +27,10 @@ for i in depth1:
 	if i is not np.nan:
 		tree.create_node(i, i, parent="Skin Disease")
 
-N_DIAGNOSIS = 2
+if DATASET_FIRST:
+	N_DIAGNOSIS = 3
+else:
+	N_DIAGNOSIS = 2
 for d in range(2,N_DIAGNOSIS+1):
 	depth = list(set(df[f"diagnosis_{d}"]))
 	for i in depth:
