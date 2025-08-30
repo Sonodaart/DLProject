@@ -55,7 +55,7 @@ def violin_optimizers(trials):
 	fig, ax = plt.subplots()
 	sns.violinplot(x="opt", y="loss", data=results, order=["RMSprop", "Adam"], palette="magma", ax=ax)
 	sns.swarmplot(x="opt", y="loss", data=results, color="gray", edgecolor="gray", size=4, ax=ax)
-	ax.set_title("Distribution of Validation Loss by Model Architecture", fontsize=16, pad=20)
+	ax.set_title("Optimizer Choice", fontsize=16, pad=20)
 	ax.set_xlabel("Model Configuration", fontsize=12)
 	ax.set_ylabel("Validation Loss (Lower is Better)", fontsize=12)
 	ax.grid(axis="y", linestyle="--", alpha=0.7)
