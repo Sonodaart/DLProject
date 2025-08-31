@@ -15,6 +15,7 @@ from pickle import load
 
 
 HYPEROPTIMIZE = False
+LOAD = True
 
 
 tf.keras.utils.set_random_seed(0)
@@ -112,14 +113,14 @@ space = {
 }
 
 
-if HYPEROPTIMIZE:
-	runs = 1000
-	trials = hyperoptimize_all(space, runs, NUM_CLASSES, train_dataset, validation_dataset)
-else:
+if LOAD:
 	with open("trials_all.pkl","rb") as f:
 		trials = load(f)
 
-
+if HYPEROPTIMIZE:
+	runs = 1000
+	trials = hyperoptimize_all(space, runs, NUM_CLASSES, train_dataset, validation_dataset,trials_preload=trials)
+else:
 	print(trials.best_trial)
 	# for t in trials:
 	# 	print(t)

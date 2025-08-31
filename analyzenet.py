@@ -60,16 +60,16 @@ params = {
 model = skinnet(NUM_CLASSES, params)
 # model = tf.keras.models.load_model("./models/my_model.keras")
 
-train(model, train_dataset, validation_dataset, epochs=50)
+train(model, train_dataset, validation_dataset, epochs=50, patience=3)
 
 
 
 confusion_matrix_total(model, train_dataset)
 confusion_matrix_total(model, validation_dataset)
 
-confusion_matrix_task(model, task1_test_dataset, t1kerato_index, t1sebo_index)
+confusion_matrix_task(model, task1_test_dataset, t1kerato_index, t1sebo_index,1)
 # confusion_matrix_task(model, task1_validation_dataset, t1kerato_index, t1sebo_index)
-confusion_matrix_task(model, task2_test_dataset, t2melanoma_index, t2nevi_index)
+confusion_matrix_task(model, task2_test_dataset, t2melanoma_index, t2nevi_index,2)
 # confusion_matrix_task(model, task2_validation_dataset, t2melanoma_index, t2nevi_index)
 
 

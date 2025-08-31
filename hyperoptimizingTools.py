@@ -19,8 +19,11 @@ def loss(params, NUM_CLASSES, epochs, train_dataset, validation_dataset):
 	val_acc, val_loss = train(model, train_dataset, validation_dataset, epochs=epochs, verbose=0)
 	return {"loss": val_loss, "acc": val_acc, "status": STATUS_OK, "model_type": params["layer_depth"]["type"], "opt":params["opt_config"]["type"]}
 
-def hyperoptimize_all(space, runs, NUM_CLASSES, train_dataset, validation_dataset, epochs=50, save=True, verbose=True):
-	trials = Trials()
+def hyperoptimize_all(space, runs, NUM_CLASSES, train_dataset, validation_dataset, trials_preload=None, epochs=50, save=True, verbose=True):
+	if trials_preload is None:
+		trials = Trials()
+	else:
+		trials = trials_preload
 
 	lambda_loss = lambda params: loss(params, NUM_CLASSES, epochs, train_dataset, validation_dataset)
 

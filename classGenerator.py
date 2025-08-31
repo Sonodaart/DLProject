@@ -143,7 +143,7 @@ def fillDataset():
 
 	MAX_TEST_CLASS_SIZE = 1_000
 
-	if DATASET_FIRST:
+	if not DATASET_FIRST:
 		# fill dataset for validation of tasks
 		_ = df.copy()
 		_ = _[(_["diagnosis_1"]=="Malignant") & (_["diagnosis_2"]=="Kerato")].sample(frac=1)
@@ -194,7 +194,7 @@ def fillDataset():
 				shutil.copy(f"raw_data\\{img}.jpg",path+"task2/testing/nevi/"+img+".jpg")
 
 
-	if not DATASET_FIRST:
+	if DATASET_FIRST:
 		# fill dataset for validation of tasks
 		_ = df.copy()
 		_ = _[(_["diagnosis_1"]=="Malignant") & ((_["diagnosis_2"]=="Malignant epidermal proliferations") | (_["diagnosis_2"]=="Malignant adnexal epithelial proliferations - Follicular"))].sample(frac=1)
